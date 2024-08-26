@@ -1,0 +1,11 @@
+a: 9628
+christmas: 96
+carol: 11
+by: 143
+charles: 1
+dickens: 8
+illustrated: 1
+george: 2
+alfred: 2
+williams: 2
+new: 37
