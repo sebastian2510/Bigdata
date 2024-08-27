@@ -3,12 +3,13 @@ class Data:
     def fetch_data():
         filename: str = "AChristmasCarol_CharlesDickens_English.txt"
         with open(filename, "r") as f:
-            data = f.read()
+            data: str = f.read()
+            data = data.lower()
         return data
     
     @staticmethod
     def word_count(data: str, words: list[str]) -> list[int]:
-        return [data.lower().count(word) for word in words]
+        return [data.count(word + " ") for word in words]
 
     
     @staticmethod
