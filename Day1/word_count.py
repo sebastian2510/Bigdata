@@ -1,8 +1,10 @@
+import string
 def fetch_data():
     filename: str = "AChristmasCarol_CharlesDickens_English.txt"
     with open(filename, "r") as f:
         data: str = f.read()
-        data = data.lower().strip()
+        translator = str.maketrans('', '', string.punctuation) 
+        data = data.translate(translator).lower().strip()
     return data
 
 def word_count(data: str) -> dict[str, int]:
@@ -23,9 +25,9 @@ def main():
     data = fetch_data()
     count = word_count(data)
     saved_data = [f"{word}: {count}" for word, count in count.items()]
-    for data in saved_data:
-        print(data)
-    print(f"Word count: {len()}")
+    for new_data in saved_data:
+        print(new_data)
+    print(f"Word count: {len(data)}")
     save_data("\n".join(saved_data))
 
 if __name__ == "__main__":

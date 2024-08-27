@@ -7,7 +7,7 @@ def fetch_data():
     filename: str = "AChristmasCarol_CharlesDickens_English.txt"
     with open(filename, "r") as f:
         data: str = f.read()
-        data = data.lower().strip()
+        data = data.lower().strip('.,?!-:;()[{}"\'').lower()
     return data
 
 def word_count(data: str) -> dict[str, int]:
