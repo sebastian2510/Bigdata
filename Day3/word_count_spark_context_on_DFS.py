@@ -44,7 +44,7 @@ def main():
     # Read from /input_dir/AChristmasCarol_CharlesDickens_English.txt
     rdd = sc.textFile("/input_dir/AChristmasCarol_CharlesDickens_English.txt")
     # Collect the text data
-    lines = rdd.collect()[0][0]
+    lines = rdd.collect()
     text = " ".join(lines)
     count = word_count(text)
     saved_data = [f"{word}: {count}" for word, count in count.items()]

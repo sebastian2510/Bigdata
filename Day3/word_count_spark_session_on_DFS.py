@@ -51,6 +51,7 @@ def main():
     saved_data = [f"{word}: {count}" for word, count in count.items()]
     for new_data in saved_data:
         print(new_data)
+        
     print(f"Word count: {len(lines)}")
     save_data(spark, saved_data)
     spark.stop()
