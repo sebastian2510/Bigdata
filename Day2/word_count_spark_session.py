@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession
 import string
 import sys
+import os
 
 sys.stdout.reconfigure(encoding='utf-16') # Needed for terminal spark-submit (it gave an error...)
 
@@ -17,11 +18,11 @@ def word_count(data: str) -> dict[str, int]:
     return word_counts
 
 def save_data(data):
+    if os.path.exists("output.txt"):
+        os.remove("output.txt")
+
     with open("output.txt", "w") as f:
         f.write(data)
-    
-    
-
 
 def main():
     spark = SparkSession.builder.appName("WordCount").getOrCreate()
