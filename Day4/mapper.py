@@ -1,11 +1,7 @@
-from mrjob.job import MRJob
+import sys
 
-class MRWordFrequencyCount(MRJob):
-
-        def mapper(self, _, line):
-            yield "chars", len(line)
-            yield "words", len(line.split())
-            yield "lines", 1
-
-if __name__ == "__main__":
-    MRWordFrequencyCount.run()
+for line in sys.stdin:
+    line = line.strip()
+    print(f"chars\t{len(line)}")
+    print(f"words\t{len(line.split())}")
+    print("lines\t1")

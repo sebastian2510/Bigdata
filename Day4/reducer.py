@@ -1,9 +1,23 @@
-from mrjob.job import MRJob
+import sys
 
-class MRWordFrequencyCount(MRJob):
+current_key = None
+current_count = 0
 
-        def reducer(self, key, values):
-            yield key, sum(values)
+for line in sys.stdin:
+    line = line.strip()
+    key, count = line.split('\t', 1)
+    try:
+        count = int(count)
+    except ValueError:
+        continue
 
-if __name__ == "__main__":
-    MRWordFrequencyCount.run()
+    if current_key == key:
+        current_count += count
+    else:
+        if current_key:
+            print(f"{current_key}\t{current_count}")
+        current_key = key
+        current_count = count
+
+if current_key == key:
+    print(f"{current_key}\t{current_count}")
